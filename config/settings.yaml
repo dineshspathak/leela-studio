@@ -1,0 +1,7 @@
+pixverse:
+  api_key: "${PIXVERSE_API_KEY}"
+  base_url: "https://app-api.pixverse.ai/openapi/v2"
+  timeout: 30.0
+  retries: 3
+  polling_interval: 5.0
+  max_parallel_jobs: 2
