@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class TextToVideoRequest(BaseModel):
@@ -27,16 +27,18 @@ class ImageToVideoRequest(BaseModel):
 
 
 class PixVerseResponseData(BaseModel):
-    video_id: str
-    status: int | None = None
-    video_url: str | None = None
-    seed: int | None = None
-    duration: int | None = None
-    resolution: str | None = None
-    created_at: str | None = None
+    model_config = {"populate_by_name": True}
+    video_id: str = Field(alias="video_id")
+    status: int | None = Field(default=None, alias="status")
+    video_url: str | None = Field(default=None, alias="video_url")
+    seed: int | None = Field(default=None, alias="seed")
+    duration: int | None = Field(default=None, alias="duration")
+    resolution: str | None = Field(default=None, alias="resolution")
+    created_at: str | None = Field(default=None, alias="created_at")
 
 
 class PixVerseEnvelope(BaseModel):
-    code: int
-    msg: str
-    data: PixVerseResponseData | None = None
+    model_config = {"populate_by_name": True}
+    code: int = Field(alias="ErrCode")
+    msg: str = Field(alias="ErrMsg")
+    data: PixVerseResponseData | None = Field(default=None, alias="Resp")
