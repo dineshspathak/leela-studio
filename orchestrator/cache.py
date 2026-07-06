@@ -21,15 +21,13 @@ class AssetRegistry:
     def _init_db(self):
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS assets (
                 hash TEXT PRIMARY KEY,
                 path TEXT,
                 metadata TEXT
             )
-            """
-        )
+            """)
         conn.commit()
         conn.close()
 
@@ -96,7 +94,11 @@ class AssetRegistry:
 
         # Find duplicate in JSON list and update or append
         existing_idx = next(
-            (i for i, x in enumerate(index_data) if x.get("prompt_hash") == prompt_hash),
+            (
+                i
+                for i, x in enumerate(index_data)
+                if x.get("prompt_hash") == prompt_hash
+            ),
             None,
         )
 

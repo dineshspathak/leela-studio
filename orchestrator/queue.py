@@ -12,11 +12,12 @@ class QueueState:
     RETRY = "RETRY"
     CANCELLED = "CANCELLED"
 
+
 class OrchestratorQueue:
     def __init__(self, checkpoint_file: str = "cache/orchestrator_queue.json"):
         self.checkpoint_file = Path(checkpoint_file)
         self.jobs: dict[str, dict[str, Any]] = {}
-        self.dependencies: dict[str, list[str]] = {} # job_id -> list of parent job_ids
+        self.dependencies: dict[str, list[str]] = {}  # job_id -> list of parent job_ids
 
     def add_job(
         self,
@@ -35,9 +36,7 @@ class OrchestratorQueue:
     def get_job(self, job_id: str) -> dict[str, Any] | None:
         return self.jobs.get(job_id)
 
-    def update_job_status(
-        self, job_id: str, status: str, error_msg: str | None = None
-    ):
+    def update_job_status(self, job_id: str, status: str, error_msg: str | None = None):
         if job_id in self.jobs:
             self.jobs[job_id]["status"] = status
             if error_msg:
@@ -46,13 +45,9 @@ class OrchestratorQueue:
             # If a job succeeds, update other WAITING jobs that depend on it
             if status == QueueState.SUCCESS:
                 for jid, deps in self.dependencies.items():
-                    if (
-                        self.jobs[jid]["status"] == QueueState.WAITING
-                        and all(
-                            self.jobs.get(d, {}).get("status")
-                            == QueueState.SUCCESS
-                            for d in deps
-                        )
+                    if self.jobs[jid]["status"] == QueueState.WAITING and all(
+                        self.jobs.get(d, {}).get("status") == QueueState.SUCCESS
+                        for d in deps
                     ):
                         self.jobs[jid]["status"] = QueueState.READY
 

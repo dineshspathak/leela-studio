@@ -66,7 +66,9 @@ class Reporter:
 
         stack = ""
         if exception:
-            stack = "".join(traceback.format_exception(None, exception, exception.__traceback__))
+            stack = "".join(
+                traceback.format_exception(None, exception, exception.__traceback__)
+            )
 
         failure_record = {
             "job_id": job_id,
@@ -79,4 +81,6 @@ class Reporter:
 
         with open(self.failures_log, "w", encoding="utf-8") as f:
             json.dump(failures, f, indent=2)
+
+
 preporter = Reporter()

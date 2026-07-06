@@ -19,5 +19,6 @@ def main():
     else:
         print("No active queue checkpoint found. Status is idle.")
 
+
 if __name__ == "__main__":
     main()

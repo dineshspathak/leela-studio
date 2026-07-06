@@ -11,5 +11,6 @@ async def main():
     await engine.run(max_workers=2)
     print("Generation complete!")
 
+
 if __name__ == "__main__":
     asyncio.run(main())

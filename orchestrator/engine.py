@@ -39,9 +39,15 @@ class OrchestratorEngine:
         total = len(self.queue.jobs)
         if total == 0:
             return {}
-        completed = sum(1 for j in self.queue.jobs.values() if j["status"] == QueueState.SUCCESS)
-        failed = sum(1 for j in self.queue.jobs.values() if j["status"] == QueueState.FAILED)
-        running = sum(1 for j in self.queue.jobs.values() if j["status"] == QueueState.RUNNING)
+        completed = sum(
+            1 for j in self.queue.jobs.values() if j["status"] == QueueState.SUCCESS
+        )
+        failed = sum(
+            1 for j in self.queue.jobs.values() if j["status"] == QueueState.FAILED
+        )
+        running = sum(
+            1 for j in self.queue.jobs.values() if j["status"] == QueueState.RUNNING
+        )
 
         percent = (completed / total) * 100.0
         elapsed = time.time() - self.start_time if self.is_running else 0.0
@@ -59,7 +65,9 @@ class OrchestratorEngine:
 
     async def run(self, max_workers: int = 2, force: bool = False):
         if not self.plan_path.exists() or not self.graph_path.exists():
-            raise FileNotFoundError("Execution plan and graph files must be compiled first.")
+            raise FileNotFoundError(
+                "Execution plan and graph files must be compiled first."
+            )
 
         with open(self.plan_path, encoding="utf-8") as f:
             plan = json.load(f)

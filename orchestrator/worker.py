@@ -35,6 +35,7 @@ class LifecycleHooks:
         for h in self.after_download_hooks:
             h(job, path)
 
+
 class OrchestratorWorker:
     def __init__(
         self,
@@ -77,12 +78,18 @@ class OrchestratorWorker:
                 # Check if all jobs in the queue are completed
                 all_done = True
                 for j in self.queue.jobs.values():
-                    if j["status"] not in (QueueState.SUCCESS, QueueState.FAILED, QueueState.CANCELLED):
+                    if j["status"] not in (
+                        QueueState.SUCCESS,
+                        QueueState.FAILED,
+                        QueueState.CANCELLED,
+                    ):
                         all_done = False
                         break
 
                 if all_done:
-                    logger.info("Worker finished: Queue is fully processed", worker_id=worker_id)
+                    logger.info(
+                        "Worker finished: Queue is fully processed", worker_id=worker_id
+                    )
                     break
 
                 # Otherwise wait for dependencies to clear
@@ -98,7 +105,9 @@ class OrchestratorWorker:
             cached_path = self.registry.get_cached_asset(prompt_hash)
 
             if cached_path and self.production:
-                logger.info("Cache hit! Reusing existing asset", job_id=job_id, path=cached_path)
+                logger.info(
+                    "Cache hit! Reusing existing asset", job_id=job_id, path=cached_path
+                )
                 preporter.add_metric("cache_hits", 1)
                 await self.event_bus.emit("CACHE_HIT", job)
                 self.queue.update_job_status(job_id, QueueState.SUCCESS)
@@ -129,7 +138,9 @@ class OrchestratorWorker:
                         "resolution": "720p",
                         "duration": job.get("duration", 5),
                         "references": job.get("references", []),
-                        "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                        "created_at": time.strftime(
+                            "%Y-%m-%dT%H:%M:%SZ", time.gmtime()
+                        ),
                     }
                     self.registry.register_asset(prompt_hash, local_path, job, metadata)
 
@@ -142,18 +153,25 @@ class OrchestratorWorker:
 
                 except Exception as e:
                     retry_count += 1
-                    logger.error("Job execution attempt failed", job_id=job_id, attempt=retry_count, error=str(e))
+                    logger.error(
+                        "Job execution attempt failed",
+                        job_id=job_id,
+                        attempt=retry_count,
+                        error=str(e),
+                    )
                     preporter.record_failure(job_id, str(e), retry_count, exception=e)
 
                     if retry_count > self.max_retries or not self.production:
                         break
 
                     await self.event_bus.emit("JOB_RETRY", job)
-                    sleep_time = backoff ** retry_count
+                    sleep_time = backoff**retry_count
                     logger.info(f"Worker sleeping for {sleep_time}s before retry")
                     await asyncio.sleep(sleep_time)
 
             if not success:
                 logger.error("Job permanently failed", job_id=job_id)
-                self.queue.update_job_status(job_id, QueueState.FAILED, "Max retries exceeded")
+                self.queue.update_job_status(
+                    job_id, QueueState.FAILED, "Max retries exceeded"
+                )
                 await self.event_bus.emit("JOB_FAILED", job)
