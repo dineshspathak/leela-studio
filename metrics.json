@@ -1,9 +1,9 @@
 {
-  "generation_time": 0.00024987299821077613,
-  "download_time": 0.00015383499885501806,
+  "generation_time": 0.00042262299848516705,
+  "download_time": 0.0002739999981713481,
   "api_latency": 0.0,
   "queue_wait_time": 0.0,
   "credits_used": 0,
   "cache_hits": 0,
-  "cache_misses": 3
+  "cache_misses": 7
 }

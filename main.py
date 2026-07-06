@@ -4,15 +4,19 @@ from pathlib import Path
 
 import typer
 
-from orchestrator.engine import OrchestratorEngine
-from orchestrator.queue import OrchestratorQueue
-from story.compiler import StoryCompiler
-from story.continuity import ContinuityEngine
-from story.parser import parse_episode
-from story.validator import validate_episode
-from timeline.scheduler import CostEstimator, ExecutionScheduler
+from ai_film_engine.core.project import ProjectManager
+from ai_film_engine.director.compiler import StoryCompiler
+from ai_film_engine.director.continuity import ContinuityEngine
+from ai_film_engine.director.parser import parse_episode
+from ai_film_engine.director.validator import validate_episode
+from ai_film_engine.orchestrator.engine import OrchestratorEngine
+from ai_film_engine.orchestrator.queue import OrchestratorQueue
+from ai_film_engine.renderer.engine import MovieRendererEngine
+from ai_film_engine.timeline.scheduler import CostEstimator, ExecutionScheduler
 
-app = typer.Typer(help="LEELA Studio Story Engine & Orchestrator CLI")
+app = typer.Typer(help="AI Film Engine Filmmaking Platform CLI")
+project_app = typer.Typer(help="Manage filmmaking projects")
+app.add_typer(project_app, name="project")
 
 
 @app.command()
@@ -78,7 +82,6 @@ def compile(
             typer.echo(f"Job: {job['job_id']}")
             typer.echo(f"  Prompt: {job['prompt']}")
             typer.echo(f"  References: {job['references']}")
-            typer.echo(f"  Output Path: {job['output_path']}")
 
         typer.echo("\n--- Cost & Resource Estimates ---")
         typer.echo(f"  Estimated Images: {costs['estimated_images']}")
@@ -86,7 +89,6 @@ def compile(
         typer.echo(f"  Estimated Text-to-Video: {costs['estimated_text_to_video']}")
         typer.echo(f"  Total Estimated Credits: {costs['total_estimated_credits']}")
         typer.echo(f"  Estimated Runtime: {costs['estimated_runtime_seconds']} seconds")
-        typer.echo("=====================")
     else:
         out_path = Path(output_dir)
         out_path.mkdir(parents=True, exist_ok=True)
@@ -116,7 +118,7 @@ def storyboard(
         raise typer.Exit(code=1)
 
     typer.echo("Invoking LEELA Director AI...")
-    from director.director import DirectorEngine
+    from ai_film_engine.director.director import DirectorEngine
 
     episode = parse_episode(file_path)
     director = DirectorEngine()
@@ -259,8 +261,6 @@ def render(
     compiler = StoryCompiler()
     plan = compiler.compile_episode(episode)
 
-    from renderer.engine import MovieRendererEngine
-
     renderer_engine = MovieRendererEngine()
 
     typer.echo("Running movie rendering engine...")
@@ -281,8 +281,6 @@ def preview(
     episode = parse_episode(file_path)
     compiler = StoryCompiler()
     plan = compiler.compile_episode(episode)
-
-    from renderer.engine import MovieRendererEngine
 
     renderer_engine = MovieRendererEngine()
 
@@ -316,6 +314,89 @@ def make(
     generate(file, force=False, production=False, workers=2)
     render(file, profile=profile)
     typer.echo("=== PRODUCTION PIPELINE COMPLETED SUCCESSFULLY ===")
+
+
+# Project Sub-Commands
+@project_app.command(name="list")
+def project_list():
+    """List all registered filmmaking projects."""
+    mgr = ProjectManager()
+    projects = mgr.list_projects()
+    if not projects:
+        typer.echo("No projects found in workspace.")
+    else:
+        typer.echo("Registered Projects:")
+        for p in projects:
+            typer.echo(f"  - {p}")
+
+
+@project_app.command(name="create")
+def project_create(
+    name: str = typer.Argument(..., help="Name of the project"),
+    template: str = typer.Option(
+        "youtube_series", "--template", help="Project template name"
+    ),
+):
+    """Create a new filmmaking project workspace."""
+    mgr = ProjectManager()
+    spec = mgr.create_project(name, template=template)
+    typer.echo(
+        f"✅ Created project '{spec.name}' from template '{spec.template}' successfully!"
+    )
+
+
+@project_app.command(name="open")
+def project_open(name: str = typer.Argument(..., help="Name of the project")):
+    """Open and load project configuration details."""
+    mgr = ProjectManager()
+    spec = mgr.load_project(name)
+    if not spec:
+        typer.echo(f"Error: Project '{name}' not found.", err=True)
+    else:
+        typer.echo(f"Opened Project: {spec.title}")
+        typer.echo(f"  Template: {spec.template}")
+        typer.echo(f"  Resolution: {spec.settings.resolution}")
+
+
+@project_app.command(name="delete")
+def project_delete(name: str = typer.Argument(..., help="Name of the project")):
+    """Delete a filmmaking project from the workspace."""
+    mgr = ProjectManager()
+    if mgr.delete_project(name):
+        typer.echo(f"✅ Deleted project '{name}' successfully.")
+    else:
+        typer.echo(f"Error: Project '{name}' not found.", err=True)
+
+
+@project_app.command(name="build")
+def project_build(
+    name: str = typer.Argument(..., help="Project name"),
+    episode_id: str = typer.Argument(..., help="Episode ID to build"),
+):
+    """Parse, compile, orchestrate, and render movie for specified project episode."""
+    mgr = ProjectManager()
+    spec = mgr.load_project(name)
+    if not spec:
+        typer.echo(f"Error: Project '{name}' not found.", err=True)
+        raise typer.Exit(code=1)
+
+    ep_path = (
+        Path("workspace/projects")
+        / name
+        / "episodes"
+        / f"episode{episode_id}"
+        / "episode.json"
+    )
+    if not ep_path.exists():
+        ep_path = Path("workspace/projects") / name / "episode.json"
+
+    if not ep_path.exists():
+        typer.echo(f"Error: Episode path '{ep_path}' not found.", err=True)
+        raise typer.Exit(code=1)
+
+    typer.echo(f"Building {name} episode {episode_id}...")
+    make(str(ep_path), profile="youtube", budget=spec.settings.budget_limit)
+    typer.echo("✅ Project build complete!")
 
 
 if __name__ == "__main__":

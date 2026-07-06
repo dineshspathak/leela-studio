@@ -5,23 +5,26 @@ import httpx
 import pytest
 import respx
 
-from config.settings import load_settings
-from pixverse.auth import PixVerseAuth
-from pixverse.client import PixVerseClient
-from pixverse.downloads import PixVerseDownloads
-from pixverse.exceptions import (
+from ai_film_engine.core.config.settings import load_settings
+from ai_film_engine.providers.pixverse.auth import PixVerseAuth
+from ai_film_engine.providers.pixverse.client import PixVerseClient
+from ai_film_engine.providers.pixverse.downloads import PixVerseDownloads
+from ai_film_engine.providers.pixverse.exceptions import (
     PixVerseAuthError,
     PixVerseRateLimitError,
 )
-from pixverse.jobs import JobManager, PixVerseJobs
-from pixverse.models import JobStatus, VideoJob
-from pixverse.schemas import ImageToVideoRequest, TextToVideoRequest
-from providers.pixverse import PixVerseProvider
+from ai_film_engine.providers.pixverse.jobs import JobManager, PixVerseJobs
+from ai_film_engine.providers.pixverse.models import JobStatus, VideoJob
+from ai_film_engine.providers.pixverse.schemas import (
+    ImageToVideoRequest,
+    TextToVideoRequest,
+)
+from ai_film_engine.providers.pixverse_provider import PixVerseProvider
 
 
 @pytest.fixture
 def test_settings():
-    return load_settings(Path("config/settings.yaml"))
+    return load_settings(Path("ai_film_engine/core/config/settings.yaml"))
 
 
 @pytest.fixture

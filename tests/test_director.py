@@ -4,18 +4,18 @@ from pathlib import Path
 import pytest
 from typer.testing import CliRunner
 
-from director.camera import CameraEngine
-from director.composition import CompositionEngine
-from director.continuity import QualityChecker
-from director.director import DirectorEngine
-from director.emotions import EmotionsEngine
-from director.language import CinematicLanguageEngine
-from director.lighting import LightingEngine
-from director.motion import MotionEngine
-from director.state import StateEngine
-from director.storyboard import StoryboardBuilder
+from ai_film_engine.director.camera import CameraEngine
+from ai_film_engine.director.composition import CompositionEngine
+from ai_film_engine.director.continuity import QualityChecker
+from ai_film_engine.director.director import DirectorEngine
+from ai_film_engine.director.emotions import EmotionsEngine
+from ai_film_engine.director.language import CinematicLanguageEngine
+from ai_film_engine.director.lighting import LightingEngine
+from ai_film_engine.director.motion import MotionEngine
+from ai_film_engine.director.parser import parse_episode
+from ai_film_engine.director.state import StateEngine
+from ai_film_engine.director.storyboard import StoryboardBuilder
 from main import app
-from story.parser import parse_episode
 
 runner = CliRunner()
 

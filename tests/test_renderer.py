@@ -4,17 +4,17 @@ from pathlib import Path
 import pytest
 from typer.testing import CliRunner
 
+from ai_film_engine.director.parser import parse_episode
+from ai_film_engine.renderer.audio import AudioEngine
+from ai_film_engine.renderer.engine import MovieRendererEngine
+from ai_film_engine.renderer.ffmpeg import FFmpegCommandCompiler
+from ai_film_engine.renderer.plugins.bloom import BloomPlugin
+from ai_film_engine.renderer.plugins.grain import GrainPlugin
+from ai_film_engine.renderer.plugins.kenburns import KenBurnsPlugin
+from ai_film_engine.renderer.scene_graph import Clip, EffectPlugin, SceneGraph, Track
+from ai_film_engine.renderer.subtitles import SubtitleEngine
+from ai_film_engine.renderer.transitions.crossfade import CrossfadeTransition
 from main import app
-from renderer.audio import AudioEngine
-from renderer.engine import MovieRendererEngine
-from renderer.ffmpeg import FFmpegCommandCompiler
-from renderer.plugins.bloom import BloomPlugin
-from renderer.plugins.grain import GrainPlugin
-from renderer.plugins.kenburns import KenBurnsPlugin
-from renderer.scene_graph import Clip, EffectPlugin, SceneGraph, Track
-from renderer.subtitles import SubtitleEngine
-from renderer.transitions.crossfade import CrossfadeTransition
-from story.parser import parse_episode
 
 runner = CliRunner()
 
@@ -131,7 +131,7 @@ def test_transition_plugins():
 
 def test_renderer_engine(sample_episode_json, tmp_path):
     episode = parse_episode(sample_episode_json)
-    from story.compiler import StoryCompiler
+    from ai_film_engine.director.compiler import StoryCompiler
 
     plan = StoryCompiler().compile_episode(episode)
 

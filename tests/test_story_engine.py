@@ -3,16 +3,16 @@ import json
 import pytest
 from typer.testing import CliRunner
 
-from episodes.schemas import Episode, GlobalDefaults, Shot
+from ai_film_engine.core.episodes.schemas import Episode, GlobalDefaults, Shot
+from ai_film_engine.director.asset_resolver import AssetResolver
+from ai_film_engine.director.compiler import StoryCompiler
+from ai_film_engine.director.continuity import ContinuityEngine
+from ai_film_engine.director.parser import parse_episode, substitute_variables
+from ai_film_engine.director.prompts import PromptBuilder
+from ai_film_engine.director.validator import validate_episode
+from ai_film_engine.timeline.builder import TimelineBuilder
+from ai_film_engine.timeline.scheduler import CostEstimator, ExecutionScheduler
 from main import app
-from story.asset_resolver import AssetResolver
-from story.compiler import StoryCompiler
-from story.continuity import ContinuityEngine
-from story.parser import parse_episode, substitute_variables
-from story.prompts import PromptBuilder
-from story.validator import validate_episode
-from timeline.builder import TimelineBuilder
-from timeline.scheduler import CostEstimator, ExecutionScheduler
 
 runner = CliRunner()
 

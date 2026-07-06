@@ -1,0 +1,18 @@
+{
+  "episode_id": "1",
+  "title": "Krishna Birth Story",
+  "jobs": [
+    {
+      "job_id": "Scene1_Shot1",
+      "scene_id": "1",
+      "shot_id": "1",
+      "generation_type": "text_to_image",
+      "prompt": "Devaki sitting in unspecified environment. Cinematic visual style: 3D render, framing: static, lighting: volumetric lighting. volumetric lighting.",
+      "negative_prompt": "blurry",
+      "references": [],
+      "duration": 5,
+      "output_path": "downloads/Episode001/Scene001/Shot001.png",
+      "provider": "pixverse"
+    }
+  ]
+}

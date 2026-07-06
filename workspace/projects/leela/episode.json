@@ -1,0 +1,79 @@
+{
+  "episode_id": "1",
+  "title": "Krishna Birth Story",
+  "variables": {
+    "krishna": "Baby Krishna",
+    "mother": "Devaki",
+    "father": "Vasudeva",
+    "prison": "Kamsa Prison"
+  },
+  "global_defaults": {
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "fps": 24,
+    "provider": "pixverse",
+    "camera_style": "static",
+    "visual_style": "photorealistic 3D animation",
+    "cinematic_profile": "volumetric lighting, warm golden tones, highly detailed",
+    "negative_prompt": "ugly, deformed, blurry, low resolution, watermark"
+  },
+  "characters": [
+    {
+      "name": "Devaki",
+      "description": "Devout mother of Krishna in sorrowful expression",
+      "costume": "traditional ancient Indian red saree",
+      "master_asset_id": "char_devaki"
+    },
+    {
+      "name": "Vasudeva",
+      "description": "Devoted father of Krishna",
+      "costume": "traditional dhoti",
+      "master_asset_id": "char_vasudeva"
+    },
+    {
+      "name": "Baby Krishna",
+      "description": "Divine baby with dark blue complexion",
+      "costume": "none",
+      "master_asset_id": "char_krishna"
+    }
+  ],
+  "locations": [
+    {
+      "name": "Kamsa Prison",
+      "environment": "indoor stone dungeon",
+      "lighting_default": "torches and shadow play",
+      "master_asset_id": "loc_prison"
+    }
+  ],
+  "scenes": [
+    {
+      "scene_id": "1",
+      "title": "Dungeon Scene",
+      "location": "${prison}",
+      "camera_default": "slow push in",
+      "lighting_default": "volumetric torches lighting",
+      "provider_default": "pixverse",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "Establishing Devaki",
+          "generation_type": "text_to_image",
+          "prompt": "${mother} sitting on stone floor inside the dungeon cell",
+          "camera": "medium shot",
+          "characters": ["Devaki"],
+          "output_filename": "Shot001.png"
+        },
+        {
+          "shot_id": "2",
+          "title": "Devaki weeping",
+          "generation_type": "image_to_video",
+          "prompt": "${mother} crying with tears falling down",
+          "camera": "close up",
+          "references": ["Scene1_Shot1"],
+          "characters": ["Devaki"],
+          "output_filename": "Shot002.mp4"
+        }
+      ]
+    }
+  ]
+}

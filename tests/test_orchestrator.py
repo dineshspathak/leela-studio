@@ -4,13 +4,13 @@ import httpx
 import pytest
 from typer.testing import CliRunner
 
-from budget.manager import BudgetManager
+from ai_film_engine.budget.manager import BudgetManager
+from ai_film_engine.orchestrator.cache import AssetRegistry
+from ai_film_engine.orchestrator.engine import OrchestratorEngine
+from ai_film_engine.orchestrator.events import EventBus
+from ai_film_engine.orchestrator.executor import OrchestratorExecutor
+from ai_film_engine.orchestrator.queue import OrchestratorQueue, QueueState
 from main import app
-from orchestrator.cache import AssetRegistry
-from orchestrator.engine import OrchestratorEngine
-from orchestrator.events import EventBus
-from orchestrator.executor import OrchestratorExecutor
-from orchestrator.queue import OrchestratorQueue, QueueState
 
 runner = CliRunner()
 
@@ -133,7 +133,7 @@ async def test_dashboard_api(tmp_path):
     budget = BudgetManager(budget_file=str(tmp_path / "b.json"))
     engine = OrchestratorEngine(production=False)
 
-    from orchestrator.monitor import start_dashboard
+    from ai_film_engine.orchestrator.monitor import start_dashboard
 
     server = start_dashboard(queue, budget, engine, port=8089)
 
@@ -153,8 +153,14 @@ async def test_dashboard_api(tmp_path):
 def test_cli_endpoints(tmp_path):
     # status check
     res_status = runner.invoke(app, ["status"])
-    assert "No active orchestrator queue" in res_status.stdout or "Queue Status" in res_status.stdout
+    assert (
+        "No active orchestrator queue" in res_status.stdout
+        or "Queue Status" in res_status.stdout
+    )
 
     # cancel check
     res_cancel = runner.invoke(app, ["cancel"])
-    assert "No active queue checkpoint" in res_cancel.stdout or "cancelled" in res_cancel.stdout
+    assert (
+        "No active queue checkpoint" in res_cancel.stdout
+        or "cancelled" in res_cancel.stdout
+    )
