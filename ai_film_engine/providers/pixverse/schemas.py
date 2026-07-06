@@ -28,7 +28,7 @@ class ImageToVideoRequest(BaseModel):
 
 class PixVerseResponseData(BaseModel):
     model_config = {"populate_by_name": True}
-    video_id: str = Field(alias="video_id")
+    video_id: str | None = Field(default=None, alias="video_id")
     status: int | None = Field(default=None, alias="status")
     video_url: str | None = Field(default=None, alias="video_url")
     seed: int | None = Field(default=None, alias="seed")

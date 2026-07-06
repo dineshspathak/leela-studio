@@ -117,9 +117,11 @@ class PixVerseJobs:
         """Validate connectivity and authentication."""
         try:
             res = await self.client._request("GET", "/account/balance")
+            print("DEBUG LIVE RES:", res)
             envelope = PixVerseEnvelope(**res)
             return envelope.code == 0
-        except Exception:
+        except Exception as e:
+            print("DEBUG ERROR:", e)
             return False
 
 

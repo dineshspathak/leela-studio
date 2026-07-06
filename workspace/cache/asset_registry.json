@@ -1,0 +1,35 @@
+[
+  {
+    "asset_id": "Scene1_Shot1",
+    "episode": "demo",
+    "scene": "Scene1",
+    "shot": "Scene1_Shot1",
+    "prompt_hash": "ba9304311386d0462c8cbe9fc7c1c77acb76ac5c1c315eed340c14314c565032",
+    "path": "workspace/projects/demo/assets/Scene1_Shot1.mp4",
+    "resolution": "1280x720",
+    "duration": 5.0,
+    "provider": "pixverse"
+  },
+  {
+    "asset_id": "Scene1_Shot2",
+    "episode": "demo",
+    "scene": "Scene1",
+    "shot": "Scene1_Shot2",
+    "prompt_hash": "2bd66cb81de4dfe8dc5927abf66c65daaa247ecbb446d0cbde1b47462af2668b",
+    "path": "workspace/projects/demo/assets/Scene1_Shot2.mp4",
+    "resolution": "1280x720",
+    "duration": 5.0,
+    "provider": "pixverse"
+  },
+  {
+    "asset_id": "Scene1_Shot3",
+    "episode": "demo",
+    "scene": "Scene1",
+    "shot": "Scene1_Shot3",
+    "prompt_hash": "6859ce9dbcbb97b76ee6d6a8c93c267382697e7a013531e804a56bc8f0b8aa2b",
+    "path": "workspace/projects/demo/assets/Scene1_Shot3.mp4",
+    "resolution": "1280x720",
+    "duration": 5.0,
+    "provider": "pixverse"
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "episode_id": "001",
+  "title": "Himalayan Sunrise Demo",
+  "jobs": [
+    {
+      "job_id": "SceneScene1_ShotScene1_Shot1",
+      "scene_id": "Scene1",
+      "shot_id": "Scene1_Shot1",
+      "generation_type": "text_to_image",
+      "prompt": "A cinematic sunrise over the Himalayas. in Himalayas. Cinematic visual style: photorealistic cinematic, framing: wide establishing shot, lighting: golden hour sunset. volumetric lighting, highly detailed.",
+      "negative_prompt": "ugly, blurry, low quality",
+      "references": [],
+      "duration": 5,
+      "output_path": "downloads/Episode001/SceneScene1/ShotScene1_Shot1.mp4",
+      "provider": "pixverse"
+    },
+    {
+      "job_id": "SceneScene1_ShotScene1_Shot2",
+      "scene_id": "Scene1",
+      "shot_id": "Scene1_Shot2",
+      "generation_type": "image_to_video",
+      "prompt": "Animate Animate the sunrise with moving clouds and gentle camera push-in.. Action/motion: static, camera movement: slow push in, lighting: golden hour sunset. Maintain consistency with visual style photorealistic cinematic.",
+      "negative_prompt": "ugly, blurry, low quality",
+      "references": [
+        "Scene1_Shot1"
+      ],
+      "duration": 5,
+      "output_path": "downloads/Episode001/SceneScene1/ShotScene1_Shot2.mp4",
+      "provider": "pixverse"
+    },
+    {
+      "job_id": "SceneScene1_ShotScene1_Shot3",
+      "scene_id": "Scene1",
+      "shot_id": "Scene1_Shot3",
+      "generation_type": "text_to_video",
+      "prompt": "A flock of birds flying across the mountains. in Himalayas. Dynamic motion: static, camera style: panning tracking shot, lighting: golden hour sunset. Visual style: photorealistic cinematic. volumetric lighting, highly detailed.",
+      "negative_prompt": "ugly, blurry, low quality",
+      "references": [],
+      "duration": 5,
+      "output_path": "downloads/Episode001/SceneScene1/ShotScene1_Shot3.mp4",
+      "provider": "pixverse"
+    }
+  ]
+}

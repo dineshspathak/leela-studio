@@ -1,0 +1,56 @@
+{
+  "episode_title": "Himalayan Sunrise Demo",
+  "shots": [
+    {
+      "job_id": "SceneScene1_ShotScene1_Shot1",
+      "scene_id": "Scene1",
+      "shot_id": "Scene1_Shot1",
+      "prompt": "A cinematic sunrise over the Himalayas.",
+      "importance": "HERO",
+      "provider_flow": "PixVerse (highest resolution video generation for critical beats)",
+      "credits": 10,
+      "framing": "close up",
+      "movement": "push in",
+      "lighting": "soft",
+      "emotion": "hope",
+      "composition": "center",
+      "motion": "breathing and micro eyes movement",
+      "cinematic_prompt": "Framing: 85mm portrait lens, shallow depth of field. Camera Movement: slow cinematic push-in tracking shot. Lighting: diffused soft light, low contrast beauty lighting. Composition: center. Key Motion: breathing and micro eyes movement. Emotional Resonance: hope.",
+      "negative_prompt": "ugly, deformed, blurry, low resolution, watermark"
+    },
+    {
+      "job_id": "SceneScene1_ShotScene1_Shot2",
+      "scene_id": "Scene1",
+      "shot_id": "Scene1_Shot2",
+      "prompt": "Animate the sunrise with moving clouds and gentle camera push-in.",
+      "importance": "BACKGROUND",
+      "provider_flow": "text_to_image (static background asset generation)",
+      "credits": 1,
+      "framing": "wide",
+      "movement": "locked",
+      "lighting": "soft",
+      "emotion": "hope",
+      "composition": "rule of thirds",
+      "motion": "cloth and hair floating simulation",
+      "cinematic_prompt": "Framing: 35mm anamorphic wide lens, deep focus. Camera Movement: static tripod lock-down shot, absolutely stable framing. Lighting: diffused soft light, low contrast beauty lighting. Composition: rule of thirds. Key Motion: cloth and hair floating simulation. Emotional Resonance: hope.",
+      "negative_prompt": "ugly, deformed, blurry, low resolution, watermark"
+    },
+    {
+      "job_id": "SceneScene1_ShotScene1_Shot3",
+      "scene_id": "Scene1",
+      "shot_id": "Scene1_Shot3",
+      "prompt": "A flock of birds flying across the mountains.",
+      "importance": "BACKGROUND",
+      "provider_flow": "text_to_image (static background asset generation)",
+      "credits": 1,
+      "framing": "wide",
+      "movement": "locked",
+      "lighting": "soft",
+      "emotion": "hope",
+      "composition": "rule of thirds",
+      "motion": "cloth and hair floating simulation",
+      "cinematic_prompt": "Framing: 35mm anamorphic wide lens, deep focus. Camera Movement: static tripod lock-down shot, absolutely stable framing. Lighting: diffused soft light, low contrast beauty lighting. Composition: rule of thirds. Key Motion: cloth and hair floating simulation. Emotional Resonance: hope.",
+      "negative_prompt": "ugly, deformed, blurry, low resolution, watermark"
+    }
+  ]
+}

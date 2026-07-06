@@ -1,10 +1,12 @@
-# Production Notes - Krishna Birth Story
+# Production Notes - Himalayan Sunrise Demo
 
 ## Resource Summaries
-- **Estimated PixVerse Credits Required**: 10
-- **New Generations Needed**: 1
+- **Estimated PixVerse Credits Required**: 12
+- **New Generations Needed**: 3
 - **Existing Assets Reused**: 0
-- **Estimated Pipeline Render Time**: 15 seconds
+- **Estimated Pipeline Render Time**: 45 seconds
 
 ## Shot List Details
-- Scene1_Shot1: PixVerse (highest resolution video generation for critical beats) (Credits: 10)
+- SceneScene1_ShotScene1_Shot1: PixVerse (highest resolution video generation for critical beats) (Credits: 10)
+- SceneScene1_ShotScene1_Shot2: text_to_image (static background asset generation) (Credits: 1)
+- SceneScene1_ShotScene1_Shot3: text_to_image (static background asset generation) (Credits: 1)

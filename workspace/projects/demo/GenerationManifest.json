@@ -1,0 +1,43 @@
+{
+  "planned_jobs": [
+    {
+      "job_id": "job_Scene1_Shot1",
+      "shot_id": "Scene1_Shot1",
+      "provider": "pixverse",
+      "model": "v2",
+      "resolution": "1280x720",
+      "duration": 4.0
+    },
+    {
+      "job_id": "job_Scene1_Shot2",
+      "shot_id": "Scene1_Shot2",
+      "provider": "pixverse",
+      "model": "v2",
+      "resolution": "1280x720",
+      "duration": 4.0
+    },
+    {
+      "job_id": "job_Scene1_Shot3",
+      "shot_id": "Scene1_Shot3",
+      "provider": "pixverse",
+      "model": "v2",
+      "resolution": "1280x720",
+      "duration": 4.0
+    }
+  ],
+  "reused_assets": [],
+  "new_assets": [
+    "Scene1_Shot1",
+    "Scene1_Shot2",
+    "Scene1_Shot3"
+  ],
+  "provider_selection": {
+    "Scene1_Shot1": "pixverse",
+    "Scene1_Shot2": "pixverse",
+    "Scene1_Shot3": "pixverse"
+  },
+  "dependencies": {},
+  "estimated_credits": 75.0,
+  "estimated_duration": 18.0,
+  "quality_profile": "standard"
+}

@@ -1,0 +1,11 @@
+{
+  "provider_utilization": {
+    "pixverse": 3
+  },
+  "asset_reuse_percentage": 0.0,
+  "credits_saved": 0.0,
+  "average_generation_time": 0.0009583473329257686,
+  "average_download_time": 0.05,
+  "queue_efficiency": 1.0,
+  "cache_efficiency": 0.0
+}
