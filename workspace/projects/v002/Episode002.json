@@ -1,0 +1,341 @@
+{
+  "episode": "v002",
+  "episode_id": "002",
+  "title": "पूतना उद्धार (When Poison Became Nectar)",
+  "characters": [
+    {
+      "name": "Krishna",
+      "description": "Baby form of Lord Krishna, radiating cosmic energy"
+    },
+    {
+      "name": "Putana",
+      "description": "Colossal demoness in disguise as a beautiful woman"
+    },
+    {
+      "name": "Yashoda",
+      "description": "Krishna's loving mother"
+    }
+  ],
+  "locations": [
+    {
+      "name": "Kamsa Throne Room",
+      "description": "Dark, shadowy chamber in Mathura"
+    },
+    {
+      "name": "Gokul Skies",
+      "description": "Stormy, thunderous clouds above Gokul"
+    },
+    {
+      "name": "Nanda Bhavan",
+      "description": "Yashoda's house in Gokul"
+    },
+    {
+      "name": "Gokul Forest",
+      "description": "Dense woods outside the village"
+    }
+  ],
+  "global_defaults": {
+    "visual_style": "photorealistic cinematic",
+    "negative_prompt": "ugly, blurry, low quality, distorted",
+    "aspect_ratio": "16:9"
+  },
+  "scenes": [
+    {
+      "scene_id": "1",
+      "title": "KAMSA'S PARANOIA",
+      "location": "Kamsa Throne Room",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "KAMSA'S PARANOIA Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: KAMSA'S PARANOIA. मथुरा का राजा, जिसके पास अपार शक्ति थी, पर नींद नहीं थी। उसका भय अब गोकुल के बच्चों का काल बनने जा रहा था।\n\n---...",
+          "location": "Kamsa Throne Room",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "KAMSA'S PARANOIA Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: KAMSA'S PARANOIA. Close up on facial expressions, cinematic lighting.",
+          "location": "Kamsa Throne Room",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "मथुरा का राजा, जिसके पास अपार शक्ति थी, पर नींद नहीं थी। उसका भय अब गोकुल के बच्चों का काल बनने जा रहा था।\n\n---"
+          },
+          "references": [
+            "Scene1_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "2",
+      "title": "THE DEMONESS FLIES",
+      "location": "Nanda Bhavan",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "THE DEMONESS FLIES Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: THE DEMONESS FLIES. और इस आज्ञा को पूरा करने के लिए कंस ने चुना पूतना को। एक ऐसी राक्षसी, जो आकाश मार्ग से उड़कर नवजातों के प्राण हर लेती थी...",
+          "location": "Nanda Bhavan",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "THE DEMONESS FLIES Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: THE DEMONESS FLIES. Close up on facial expressions, cinematic lighting.",
+          "location": "Nanda Bhavan",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "और इस आज्ञा को पूरा करने के लिए कंस ने चुना पूतना को। एक ऐसी राक्षसी, जो आकाश मार्ग से उड़कर नवजातों के प्राण हर लेती थी।\n\n---"
+          },
+          "references": [
+            "Scene2_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "3",
+      "title": "THE DECEPTIVE BEAUTY",
+      "location": "Nanda Bhavan",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "THE DECEPTIVE BEAUTY Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: THE DECEPTIVE BEAUTY. वह गोकुल में राक्षसी बनकर नहीं आई। उसने रूप धरा एक अत्यंत सुंदर स्त्री का। माथे पर कुमकुम, बालों में चमेली की सुगंध। उसक...",
+          "location": "Nanda Bhavan",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "THE DECEPTIVE BEAUTY Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: THE DECEPTIVE BEAUTY. Close up on facial expressions, cinematic lighting.",
+          "location": "Nanda Bhavan",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "वह गोकुल में राक्षसी बनकर नहीं आई। उसने रूप धरा एक अत्यंत सुंदर स्त्री का। माथे पर कुमकुम, बालों में चमेली की सुगंध। उसके इस रूप ने नंद भवन के सभी लोगों को सम्मोहित कर दिया।\n\n---"
+          },
+          "references": [
+            "Scene3_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "4",
+      "title": "THE PALNE BEAT",
+      "location": "Nanda Bhavan",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "THE PALNE BEAT Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: THE PALNE BEAT. जैसे ही उसने बच्चे को उठाया, कृष्ण ने अपनी आँखें मूँद लीं। सृष्टि के स्वामी ने आँखें क्यों बंद कीं? शायद, वे उस राक्षसी ...",
+          "location": "Nanda Bhavan",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "THE PALNE BEAT Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: THE PALNE BEAT. Close up on facial expressions, cinematic lighting.",
+          "location": "Nanda Bhavan",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "जैसे ही उसने बच्चे को उठाया, कृष्ण ने अपनी आँखें मूँद लीं। सृष्टि के स्वामी ने आँखें क्यों बंद कीं? शायद, वे उस राक्षसी के भीतर छिपे विष को भस्म करने का मार्ग सोच रहे थे।\n\n---"
+          },
+          "references": [
+            "Scene4_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "5",
+      "title": "THE CLIMAX — THE SACRED BREASTFEEDING",
+      "location": "Nanda Bhavan",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "THE CLIMAX — THE SACRED BREASTFEEDING Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: THE CLIMAX — THE SACRED BREASTFEEDING. पूतना ने अपने स्तनों पर कालकूट नाम का महाविष लगाया था। लेकिन कृष्ण ने केवल दूध नहीं पिया, उन्होंने उसके प्राणों को ही खी...",
+          "location": "Nanda Bhavan",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "THE CLIMAX — THE SACRED BREASTFEEDING Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: THE CLIMAX — THE SACRED BREASTFEEDING. Close up on facial expressions, cinematic lighting.",
+          "location": "Nanda Bhavan",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "पूतना ने अपने स्तनों पर कालकूट नाम का महाविष लगाया था। लेकिन कृष्ण ने केवल दूध नहीं पिया, उन्होंने उसके प्राणों को ही खींचना शुरू कर दिया।\n\n---"
+          },
+          "references": [
+            "Scene5_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "6",
+      "title": "THE GIANT'S FALL",
+      "location": "Gokul Forest",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "THE GIANT'S FALL Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: THE GIANT'S FALL. पूतना का झूठा रूप कांच की तरह टूट गया। उसका विशाल राक्षसी शरीर गोकुल के बाहर जा गिरा, जिससे बड़े-बड़े वृक्ष उखड़ गए।\n\n--...",
+          "location": "Gokul Forest",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "THE GIANT'S FALL Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: THE GIANT'S FALL. Close up on facial expressions, cinematic lighting.",
+          "location": "Gokul Forest",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "पूतना का झूठा रूप कांच की तरह टूट गया। उसका विशाल राक्षसी शरीर गोकुल के बाहर जा गिरा, जिससे बड़े-बड़े वृक्ष उखड़ गए।\n\n---"
+          },
+          "references": [
+            "Scene6_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "7",
+      "title": "KRISHNA'S SMILE",
+      "location": "Nanda Bhavan",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "KRISHNA'S SMILE Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: KRISHNA'S SMILE. गोकुलवासियों ने देखा कि उस भयानक शरीर पर उनका नन्हा कान्हा खेल रहा था। यशोदा ने उसे लपककर छाती से लगा लिया।\n\n---...",
+          "location": "Nanda Bhavan",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "KRISHNA'S SMILE Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: KRISHNA'S SMILE. Close up on facial expressions, cinematic lighting.",
+          "location": "Nanda Bhavan",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "गोकुलवासियों ने देखा कि उस भयानक शरीर पर उनका नन्हा कान्हा खेल रहा था। यशोदा ने उसे लपककर छाती से लगा लिया।\n\n---"
+          },
+          "references": [
+            "Scene7_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "8",
+      "title": "THE FRAGRANT LIBERATION & LESSON",
+      "location": "Gokul Forest",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "THE FRAGRANT LIBERATION & LESSON Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: THE FRAGRANT LIBERATION & LESSON. जब पूतना के शरीर का दाह संस्कार किया गया, तो हवा में कोई दुर्गंध नहीं थी। चिता से चंदन जैसी मीठी सुगंध उठी। क्योंकि प्रभ...",
+          "location": "Gokul Forest",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "THE FRAGRANT LIBERATION & LESSON Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: THE FRAGRANT LIBERATION & LESSON. Close up on facial expressions, cinematic lighting.",
+          "location": "Gokul Forest",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "जब पूतना के शरीर का दाह संस्कार किया गया, तो हवा में कोई दुर्गंध नहीं थी। चिता से चंदन जैसी मीठी सुगंध उठी। क्योंकि प्रभु के स्पर्श ने उसके सारे पापों को धोकर उसे माता की गति दे दी थी। और यही हमारे जीवन की सीख है — जब ईश्वर हमारे जीवन में प्रवेश करते हैं, तो हमारे भीतर का सारा विष भी अमृत बन जाता है।\n\n---"
+          },
+          "references": [
+            "Scene8_Shot1"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "9",
+      "title": "THE NEXT THREAT",
+      "location": "Nanda Bhavan",
+      "shots": [
+        {
+          "shot_id": "1",
+          "title": "THE NEXT THREAT Part 1",
+          "generation_type": "text_to_video",
+          "prompt": "Cinematic shot representing: THE NEXT THREAT. कंस की पहली चाल नाकाम हो चुकी थी। पर गोकुल पर अभी एक और संकट मंडराने वाला था। हवा का एक भयानक झोंका... जो सब कुछ उड़ा ले...",
+          "location": "Nanda Bhavan",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "narration": null,
+          "references": []
+        },
+        {
+          "shot_id": "2",
+          "title": "THE NEXT THREAT Part 2",
+          "generation_type": "image_to_video",
+          "prompt": "Animate details of: THE NEXT THREAT. Close up on facial expressions, cinematic lighting.",
+          "location": "Nanda Bhavan",
+          "camera": "close up emotional shot",
+          "duration": 5,
+          "narration": {
+            "text": "कंस की पहली चाल नाकाम हो चुकी थी। पर गोकुल पर अभी एक और संकट मंडराने वाला था। हवा का एक भयानक झोंका... जो सब कुछ उड़ा ले जाने को तैयार था। तृणावर्त। वह कथा... अगली बार। जय श्री कृष्ण।\n\n---"
+          },
+          "references": [
+            "Scene9_Shot1"
+          ]
+        }
+      ]
+    }
+  ]
+}

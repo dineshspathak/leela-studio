@@ -24,7 +24,7 @@ class DirectorEngine:
 
         # 1. Initialize character registry in State Engine
         for char in episode.characters:
-            self.state_engine.register_character(char.name, char.costume)
+            self.state_engine.register_character(char.name, char.costume or "default")
 
         # 2. Design initial shots list
         for scene in episode.scenes:
