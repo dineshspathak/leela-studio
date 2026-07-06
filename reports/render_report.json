@@ -1,5 +1,5 @@
 {
-  "render_time": 0.0008454589997199946,
+  "render_time": 0.0008312079999086563,
   "encode_speed": "1.0x",
   "ffmpeg_version": "6.0",
   "cpu_usage": "25%",
@@ -7,6 +7,6 @@
   "cache_hits": 0,
   "cache_misses": 1,
   "scene_timings": {
-    "Scene1": 0.0008454589997199946
+    "Scene1": 0.0008312079999086563
   }
 }

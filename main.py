@@ -172,8 +172,26 @@ def generate(
         False, "--production", help="Enable budget, checkpoints, retries, and caching"
     ),
     workers: int = typer.Option(2, "--workers", help="Max concurrent workers"),
+    resume: bool = typer.Option(
+        False, "--resume", help="Resume generation at asset level"
+    ),
+    dry_run: bool = typer.Option(
+        False, "--dry-run", help="Perform dry run without calling APIs"
+    ),
 ):
     """Run generation orchestrator for compiled episode plan."""
+    from ai_film_engine.generator.engine import GenerationEngine
+
+    gen_engine = GenerationEngine()
+
+    if dry_run:
+        gen_engine.run_generation(file, dry_run=True)
+        typer.echo("Saved generation manifest successfully.")
+        return
+
+    # Call run_generation to run planner, resolvers, and save manifest
+    gen_engine.run_generation(file, resume=resume, production=production)
+
     file_path = Path(file)
     if not file_path.exists():
         typer.echo(f"Error: File '{file}' not found.", err=True)
@@ -197,6 +215,30 @@ def generate(
         f"Starting orchestrator in {'PRODUCTION' if production else 'DEVELOPMENT'} mode..."
     )
     asyncio.run(engine.run(max_workers=workers, force=force))
+
+
+@app.command()
+def analyze(file: str = typer.Argument(..., help="Path to Episode JSON file")):
+    """Perform a complete production analysis (dry run) without generating assets."""
+    file_path = Path(file)
+    if not file_path.exists():
+        typer.echo(f"Error: File '{file}' not found.", err=True)
+        raise typer.Exit(code=1)
+
+    from ai_film_engine.generator.engine import GenerationEngine
+
+    engine = GenerationEngine()
+    manifest = engine.run_generation(str(file_path), dry_run=True)
+
+    typer.echo("\n=== PRODUCTION ANALYSIS ===")
+    typer.echo(f"Quality Profile: {manifest['quality_profile']}")
+    typer.echo(f"Estimated Credits: {manifest['estimated_credits']}")
+    typer.echo(f"Estimated Duration: {manifest['estimated_duration']} seconds")
+    typer.echo(f"Assets to Reuse: {len(manifest['reused_assets'])}")
+    typer.echo(f"Assets to Generate: {len(manifest['new_assets'])}")
+    typer.echo("\nProvider Selection:")
+    for shot_id, prov in manifest["provider_selection"].items():
+        typer.echo(f"  Shot {shot_id}: {prov}")
 
 
 @app.command()
