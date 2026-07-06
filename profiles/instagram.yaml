@@ -1,0 +1,8 @@
+name: "instagram"
+resolution: "1080x1080"
+aspect_ratio: "1:1"
+fps: 30
+video_codec: "libx264"
+audio_codec: "aac"
+bitrate: "4M"
+container: "mp4"

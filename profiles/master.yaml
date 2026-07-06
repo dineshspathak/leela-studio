@@ -1,0 +1,8 @@
+name: "master"
+resolution: "3840x2160"
+aspect_ratio: "16:9"
+fps: 24
+video_codec: "dnxhr"
+audio_codec: "pcm_s16le"
+bitrate: "lossless"
+container: "mov"

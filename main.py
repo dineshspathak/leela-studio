@@ -239,5 +239,84 @@ def status():
         typer.echo("No active orchestrator queue is currently running.")
 
 
+@app.command()
+def render(
+    file: str = typer.Argument(..., help="Path to Episode JSON file"),
+    profile: str = typer.Option(
+        "youtube",
+        "--profile",
+        help="Export profile name (youtube, shorts, instagram, master)",
+    ),
+):
+    """Render the full final movie from compiled episode plan and storyboard."""
+    file_path = Path(file)
+    if not file_path.exists():
+        typer.echo(f"Error: File '{file}' not found.", err=True)
+        raise typer.Exit(code=1)
+
+    typer.echo("Compiling story and loading assets...")
+    episode = parse_episode(file_path)
+    compiler = StoryCompiler()
+    plan = compiler.compile_episode(episode)
+
+    from renderer.engine import MovieRendererEngine
+
+    renderer_engine = MovieRendererEngine()
+
+    typer.echo("Running movie rendering engine...")
+    out_path = renderer_engine.render_episode(episode.title, plan, profile_name=profile)
+    typer.echo(f"✅ Render complete! Output video: {out_path}")
+
+
+@app.command()
+def preview(
+    file: str = typer.Argument(..., help="Path to Episode JSON file"),
+):
+    """Render a 30-second preview of the episode."""
+    file_path = Path(file)
+    if not file_path.exists():
+        typer.echo(f"Error: File '{file}' not found.", err=True)
+        raise typer.Exit(code=1)
+
+    episode = parse_episode(file_path)
+    compiler = StoryCompiler()
+    plan = compiler.compile_episode(episode)
+
+    from renderer.engine import MovieRendererEngine
+
+    renderer_engine = MovieRendererEngine()
+
+    typer.echo("Rendering preview clips...")
+    out_path = renderer_engine.render_episode(episode.title, plan, preview=True)
+    typer.echo(f"✅ Preview render complete! Output video: {out_path}")
+
+
+@app.command()
+def export(
+    file: str = typer.Argument(..., help="Path to Episode JSON file"),
+    profile: str = typer.Option(
+        ...,
+        "--profile",
+        help="Export profile name (youtube, shorts, instagram, master)",
+    ),
+):
+    """Export the movie applying specific profile settings."""
+    render(file, profile)
+
+
+@app.command()
+def make(
+    file: str = typer.Argument(..., help="Path to Episode JSON file"),
+    profile: str = typer.Option("youtube", "--profile", help="Export profile name"),
+    budget: int = typer.Option(15, "--budget", help="Target credits budget limit"),
+):
+    """One-Command Build: Parse, validate, compile storyboard, orchestrate, and render finished movie!"""
+    typer.echo("=== STARTING FULL PRODUCTION PIPELINE ===")
+    storyboard(file, budget=budget)
+    generate(file, force=False, production=False, workers=2)
+    render(file, profile=profile)
+    typer.echo("=== PRODUCTION PIPELINE COMPLETED SUCCESSFULLY ===")
+
+
 if __name__ == "__main__":
     app()

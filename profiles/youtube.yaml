@@ -1,0 +1,8 @@
+name: "youtube"
+resolution: "1920x1080"
+aspect_ratio: "16:9"
+fps: 24
+video_codec: "libx264"
+audio_codec: "aac"
+bitrate: "8M"
+container: "mp4"
