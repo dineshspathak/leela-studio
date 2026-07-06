@@ -27,6 +27,16 @@ class Settings(BaseSettings):
 def load_settings(
     yaml_path: Path = Path("ai_film_engine/core/config/settings.yaml"),
 ) -> Settings:
+    # Load .env manually to populate environment variables
+    env_path = Path(".env")
+    if env_path.exists():
+        with open(env_path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ[k.strip()] = v.strip()
+
     # Read yaml
     if yaml_path.exists():
         with open(yaml_path, encoding="utf-8") as f:

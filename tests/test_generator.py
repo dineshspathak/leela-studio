@@ -1,6 +1,8 @@
 import json
 
+import httpx
 import pytest
+import respx
 
 from ai_film_engine.generator.dispatcher import AdaptiveScheduler, ProviderHealthManager
 from ai_film_engine.generator.engine import GenerationEngine
@@ -102,12 +104,18 @@ def test_planner_and_health():
     assert rebalanced[0]["provider"] == "pixverse"
 
 
-def test_generation_engine(sample_episode_data, tmp_path):
+@respx.mock
+def test_generation_engine(sample_episode_data, tmp_path, monkeypatch):
+    monkeypatch.setenv("PIXVERSE_API_KEY", "mock_key")
+    respx.get("https://app-api.pixverse.ai/openapi/v2/health").mock(
+        return_value=httpx.Response(200, json={"code": 0, "msg": "success"})
+    )
+
     # Set up active registry database mock
     reg_file = tmp_path / "cache/asset_registry.json"
     reg_file.parent.mkdir(parents=True, exist_ok=True)
     with open(reg_file, "w", encoding="utf-8") as f:
-        json.dump([], f)
+        f.write("[]")
 
     engine = GenerationEngine(workspace_path=str(tmp_path), profile_name="draft")
     manifest = engine.run_generation(str(sample_episode_data), dry_run=False)

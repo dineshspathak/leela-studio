@@ -29,6 +29,43 @@ class GenerationEngine:
         production: bool = False,
     ) -> dict[str, Any]:
         """Core Generation loop executing the pipeline and creating reports."""
+        # Authentication and health check (only in live run mode)
+        if not dry_run:
+            import asyncio
+            import os
+
+            api_key = os.getenv("PIXVERSE_API_KEY")
+            if not api_key:
+                print("❌ Authentication failed")
+                raise ValueError("PIXVERSE_API_KEY environment variable not set")
+
+            from ai_film_engine.providers.pixverse.client import PixVerseClient
+            from ai_film_engine.providers.pixverse.jobs import PixVerseJobs
+
+            client = PixVerseClient(api_key=api_key)
+            jobs_api = PixVerseJobs(client)
+
+            async def verify_auth():
+                try:
+                    return await jobs_api.health_check()
+                except Exception:
+                    return False
+
+            try:
+                try:
+                    success = asyncio.run(verify_auth())
+                except RuntimeError:
+                    loop = asyncio.get_event_loop()
+                    success = loop.run_until_complete(verify_auth())
+            except Exception:
+                success = False
+
+            if success:
+                print("✅ PixVerse authentication successful")
+            else:
+                print("❌ Authentication failed")
+                raise ValueError("PixVerse authentication failed")
+
         start_time = time.perf_counter()
 
         with open(episode_path, encoding="utf-8") as f:
