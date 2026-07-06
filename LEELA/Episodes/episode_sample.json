@@ -1,0 +1,57 @@
+{
+  "episode": "episode_sample",
+  "music": "MUSIC_001",
+  "scenes": [
+    {
+      "scene": 1,
+      "narration": "मथुरा के भव्य महल में देवकी और वसुदेव का विवाह संपन्न हो रहा था।",
+      "duration": 12.096,
+      "visuals": [
+        "PALACE_001"
+      ],
+      "audio": {
+        "narration": "NARRATION_001"
+      },
+      "effects": {
+        "motion": "zoom_out",
+        "overlays": []
+      }
+    },
+    {
+      "scene": 2,
+      "narration": "लेकिन क्रूर राजा कंस ने उन दोनों को कालकोठरी में बंदी बना लिया।",
+      "duration": 11.976,
+      "visuals": [
+        "PRISON_001",
+        "DEVAKI_001"
+      ],
+      "audio": {
+        "narration": "NARRATION_002"
+      },
+      "effects": {
+        "motion": "zoom_in",
+        "overlays": [
+          "grain"
+        ]
+      }
+    },
+    {
+      "scene": 3,
+      "narration": "और आधी रात को तूफानी वर्षा में वसुदेव यमुना पार करने लगे।",
+      "duration": 12.096,
+      "visuals": [
+        "YAMUNA_001"
+      ],
+      "audio": {
+        "narration": "NARRATION_003",
+        "sfx": "SFX_001"
+      },
+      "effects": {
+        "motion": "pan_left",
+        "overlays": [
+          "grain"
+        ]
+      }
+    }
+  ]
+}

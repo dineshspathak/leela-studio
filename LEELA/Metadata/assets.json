@@ -1,0 +1,66 @@
+[
+  {
+    "id": "DEVAKI_001",
+    "type": "character",
+    "name": "Devaki",
+    "emotion": "sorrowful",
+    "camera": "closeup",
+    "file": "Assets/Characters/Devaki/devaki_closeup_sorrowful.png"
+  },
+  {
+    "id": "PALACE_001",
+    "type": "background",
+    "name": "Palace",
+    "camera": "establishing",
+    "file": "Assets/Backgrounds/Palace/wedding_scene_establishing.png"
+  },
+  {
+    "id": "PRISON_001",
+    "type": "background",
+    "name": "Prison",
+    "camera": "wide",
+    "file": "Assets/Backgrounds/Prison/prison_cell_wide_establishing.png"
+  },
+  {
+    "id": "YAMUNA_001",
+    "type": "background",
+    "name": "Yamuna",
+    "camera": "wide",
+    "file": "Assets/Backgrounds/Yamuna/yamuna_crossing_wide.png"
+  },
+  {
+    "id": "NARRATION_001",
+    "type": "audio",
+    "category": "narration",
+    "name": "scene1_narration",
+    "file": "Assets/Audio/Narration/scene1_narration.mp3"
+  },
+  {
+    "id": "NARRATION_002",
+    "type": "audio",
+    "category": "narration",
+    "name": "scene2_narration",
+    "file": "Assets/Audio/Narration/scene2_narration.mp3"
+  },
+  {
+    "id": "NARRATION_003",
+    "type": "audio",
+    "category": "narration",
+    "name": "scene3_narration",
+    "file": "Assets/Audio/Narration/scene3_narration.mp3"
+  },
+  {
+    "id": "MUSIC_001",
+    "type": "audio",
+    "category": "music",
+    "name": "bg_theme",
+    "file": "Assets/Audio/Music/bg_theme.mp3"
+  },
+  {
+    "id": "SFX_001",
+    "type": "audio",
+    "category": "sfx",
+    "name": "thunder_sfx",
+    "file": "Assets/Audio/SFX/thunder_sfx.mp3"
+  }
+]
