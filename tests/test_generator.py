@@ -107,7 +107,7 @@ def test_planner_and_health():
 @respx.mock
 def test_generation_engine(sample_episode_data, tmp_path, monkeypatch):
     monkeypatch.setenv("PIXVERSE_API_KEY", "mock_key")
-    respx.get("https://app-api.pixverse.ai/openapi/v2/health").mock(
+    respx.get("https://app-api.pixverse.ai/openapi/v2/account/balance").mock(
         return_value=httpx.Response(200, json={"code": 0, "msg": "success"})
     )
 

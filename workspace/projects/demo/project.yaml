@@ -1,0 +1,11 @@
+created_at: '2026-07-06T12:00:00Z'
+name: demo
+settings:
+  aspect_ratio: '16:9'
+  audio_codec: aac
+  budget_limit: 500
+  fps: 24
+  resolution: 1920x1080
+  video_codec: libx264
+template: youtube_series
+title: Demo Project

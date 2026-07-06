@@ -116,7 +116,7 @@ class PixVerseJobs:
     async def health_check(self) -> bool:
         """Validate connectivity and authentication."""
         try:
-            res = await self.client._request("GET", "/health")
+            res = await self.client._request("GET", "/account/balance")
             envelope = PixVerseEnvelope(**res)
             return envelope.code == 0
         except Exception:

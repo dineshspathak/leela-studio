@@ -48,7 +48,7 @@ async def test_client_requests():
     )
 
     # Mock health endpoint
-    respx.get("https://app-api.pixverse.ai/openapi/v2/health").mock(
+    respx.get("https://app-api.pixverse.ai/openapi/v2/account/balance").mock(
         return_value=httpx.Response(200, json={"code": 0, "msg": "success"})
     )
 
@@ -66,12 +66,12 @@ async def test_client_rate_limit_and_error():
     )
 
     # Mock rate limit
-    respx.get("https://app-api.pixverse.ai/openapi/v2/health").mock(
+    respx.get("https://app-api.pixverse.ai/openapi/v2/account/balance").mock(
         return_value=httpx.Response(429, text="Rate limit exceeded")
     )
 
     with pytest.raises(PixVerseRateLimitError):
-        await client._request("GET", "/health")
+        await client._request("GET", "/account/balance")
     await client.close()
 
 
@@ -81,11 +81,11 @@ async def test_client_auth_error():
     client = PixVerseClient(
         api_key="test_key", base_url="https://app-api.pixverse.ai/openapi/v2", retries=0
     )
-    respx.get("https://app-api.pixverse.ai/openapi/v2/health").mock(
+    respx.get("https://app-api.pixverse.ai/openapi/v2/account/balance").mock(
         return_value=httpx.Response(401, text="Unauthorized")
     )
     with pytest.raises(PixVerseAuthError):
-        await client._request("GET", "/health")
+        await client._request("GET", "/account/balance")
     await client.close()
 
 

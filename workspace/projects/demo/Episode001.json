@@ -1,0 +1,56 @@
+{
+  "episode": "demo",
+  "title": "Himalayan Sunrise Demo",
+  "characters": [],
+  "locations": [
+    {
+      "name": "Himalayas",
+      "description": "Snowy peaks under beautiful skies"
+    }
+  ],
+  "global_defaults": {
+    "visual_style": "photorealistic cinematic",
+    "negative_prompt": "ugly, blurry, low quality",
+    "aspect_ratio": "16:9"
+  },
+  "scenes": [
+    {
+      "scene_id": "Scene1",
+      "title": "Sunrise and Flight",
+      "location": "Himalayas",
+      "lighting_default": "golden hour sunset",
+      "shots": [
+        {
+          "shot_id": "Scene1_Shot1",
+          "title": "Himalayan Sunrise",
+          "generation_type": "text_to_image",
+          "prompt": "A cinematic sunrise over the Himalayas.",
+          "location": "Himalayas",
+          "camera": "wide establishing shot",
+          "duration": 5,
+          "references": []
+        },
+        {
+          "shot_id": "Scene1_Shot2",
+          "title": "Sunrise Animation",
+          "generation_type": "image_to_video",
+          "prompt": "Animate the sunrise with moving clouds and gentle camera push-in.",
+          "location": "Himalayas",
+          "camera": "slow push in",
+          "duration": 5,
+          "references": ["Scene1_Shot1"]
+        },
+        {
+          "shot_id": "Scene1_Shot3",
+          "title": "Birds Flight",
+          "generation_type": "text_to_video",
+          "prompt": "A flock of birds flying across the mountains.",
+          "location": "Himalayas",
+          "camera": "panning tracking shot",
+          "duration": 5,
+          "references": []
+        }
+      ]
+    }
+  ]
+}
